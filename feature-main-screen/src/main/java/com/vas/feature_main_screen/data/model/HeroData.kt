@@ -4,7 +4,7 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-data class HeroApi(
+data class HeroData(
 
     @Json(name = "id")
     var id: Int,

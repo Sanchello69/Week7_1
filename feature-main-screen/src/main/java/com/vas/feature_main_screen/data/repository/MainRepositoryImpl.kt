@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.map
 import com.vas.core.utils.resultLiveData
 import com.vas.feature_main_screen.data.local.MainLocalFile
-import com.vas.feature_main_screen.data.model.HeroApi
 import com.vas.feature_main_screen.data.network.NetworkClient
 import com.vas.feature_main_screen.domain.model.Hero
 import com.vas.feature_main_screen.domain.repository.MainRepository

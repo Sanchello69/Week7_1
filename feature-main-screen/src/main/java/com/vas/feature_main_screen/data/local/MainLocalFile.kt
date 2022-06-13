@@ -8,19 +8,17 @@ import androidx.lifecycle.liveData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.vas.core.utils.Constants.HEROES_FILE
-import com.vas.feature_main_screen.data.model.HeroApi
+import com.vas.feature_main_screen.data.model.HeroData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.json.JSONArray
-import java.io.FileOutputStream
 
 class MainLocalFile(private val context: Context) {
 
     private val moshi = Moshi.Builder().build()
-    private val type = Types.newParameterizedType(List::class.java, HeroApi::class.java)
-    private val adapter = moshi.adapter<List<HeroApi>>(type)
+    private val type = Types.newParameterizedType(List::class.java, HeroData::class.java)
+    private val adapter = moshi.adapter<List<HeroData>>(type)
 
-    fun getHeroesFile() : LiveData<List<HeroApi>> = liveData(Dispatchers.IO) {
+    fun getHeroesFile() : LiveData<List<HeroData>> = liveData(Dispatchers.IO) {
         try {
             val fileInputStream = context.openFileInput(HEROES_FILE)
             val bytes = ByteArray(fileInputStream.available())
@@ -38,7 +36,7 @@ class MainLocalFile(private val context: Context) {
         }
     }
 
-    suspend fun saveHeroesFile(heroesList: List<HeroApi>){
+    suspend fun saveHeroesFile(heroesList: List<HeroData>){
         withContext(Dispatchers.IO){
             val heroesJson = adapter.toJson(heroesList)
 

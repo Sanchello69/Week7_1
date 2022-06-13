@@ -73,7 +73,6 @@ class MainFragment : Fragment() {
                 Result.Status.ERROR -> Log.d("status", "ERROR")
             }
         })
-
     }
 
     private fun setupUI() {

@@ -13,6 +13,7 @@ import androidx.lifecycle.get
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.vas.core.utils.Constants
+import com.vas.core.utils.Result
 import com.vas.core.utils.Status
 import com.vas.feature_details_screen.R
 import com.vas.feature_details_screen.databinding.FragmentDetailsBinding
@@ -56,21 +57,17 @@ class DetailsFragment : Fragment() {
 
     private fun setupObservers() {
         var name = arguments?.getString("name")?:"Lina"
-        viewModel?.getDetails(name)?.observe(viewLifecycleOwner, Observer {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        Log.d("status", "SUCCESS")
-                        Log.d("status", "${it.data}")
-                        setupUI(it.data!!)
-                    }
-                    Status.ERROR -> {
-                        Log.d("status", "ERROR ${it.message}")
-                    }
-                    Status.LOADING -> {
-                        Log.d("status",  "LOADING")
-                    }
+
+        viewModel?.getDetails(name)?.observe(viewLifecycleOwner, Observer { result ->
+            when (result.status){
+                Result.Status.SUCCESS -> {
+
+                    Log.d("status", "SUCCESS")
+
+                    result.data?.let { setupUI(it) }
                 }
+                Result.Status.LOADING -> Log.d("status", "LOADING")
+                Result.Status.ERROR -> Log.d("status", "ERROR")
             }
         })
     }

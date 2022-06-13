@@ -1,6 +1,7 @@
 package com.vas.week7_1.di
 
 import android.content.Context
+import com.vas.feature_details_screen.data.local.DetailsLocalFile
 import com.vas.feature_details_screen.data.network.NetworkClientDetails
 import com.vas.feature_details_screen.data.repository.DetailsRepositoryImpl
 import com.vas.feature_details_screen.domain.repository.DetailsRepository
@@ -35,7 +36,14 @@ class DataModule {
     }
 
     @Provides
-    fun provideDetailsRepository(networkClient: NetworkClientDetails): DetailsRepository {
-        return DetailsRepositoryImpl(networkClient = networkClient)
+    fun provideDetailsRepository(networkClient: NetworkClientDetails,
+                                 detailsLocalFile: DetailsLocalFile): DetailsRepository {
+        return DetailsRepositoryImpl(networkClient = networkClient,
+            detailsLocalFile = detailsLocalFile)
+    }
+
+    @Provides
+    fun provideDetailsLocalFile(context: Context): DetailsLocalFile {
+        return DetailsLocalFile(context)
     }
 }

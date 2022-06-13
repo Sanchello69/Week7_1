@@ -5,7 +5,7 @@ import com.squareup.moshi.Types
 import com.vas.core.utils.Constants.BASE_URL
 import com.vas.core.utils.Constants.HEROES_URL
 import com.vas.core.utils.Result
-import com.vas.feature_main_screen.data.model.HeroApi
+import com.vas.feature_main_screen.data.model.HeroData
 import okhttp3.OkHttpClient
 import okhttp3.Request
 
@@ -14,10 +14,10 @@ class NetworkClient {
     private val client = OkHttpClient()
 
     private val moshi = Moshi.Builder().build()
-    private val type = Types.newParameterizedType(List::class.java, HeroApi::class.java)
-    private val adapter = moshi.adapter<List<HeroApi>>(type)
+    private val type = Types.newParameterizedType(List::class.java, HeroData::class.java)
+    private val adapter = moshi.adapter<List<HeroData>>(type)
 
-    fun getHeroesList(): Result<List<HeroApi>> {
+    fun getHeroesList(): Result<List<HeroData>> {
         try {
             val request = Request.Builder()
                 .url(BASE_URL + HEROES_URL)

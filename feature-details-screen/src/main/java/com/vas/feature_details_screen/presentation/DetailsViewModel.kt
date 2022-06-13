@@ -8,12 +8,5 @@ import kotlinx.coroutines.Dispatchers
 
 class DetailsViewModel(private val getDetailsUseCase: GetDetailsUseCase) : ViewModel() {
 
-    fun getDetails(name: String) = liveData(Dispatchers.IO) {
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = getDetailsUseCase.execute(name)))
-        } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
-        }
-    }
+    fun getDetails(name: String) = getDetailsUseCase.execute(name)
 }
