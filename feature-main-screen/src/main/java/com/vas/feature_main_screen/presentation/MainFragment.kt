@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import com.vas.core.utils.Result
-import com.vas.core.utils.Status
 import com.vas.feature_main_screen.databinding.FragmentMainBinding
 import com.vas.feature_main_screen.di.MainComponentViewModel
 import com.vas.feature_main_screen.navigation.MainNavCommandProvider

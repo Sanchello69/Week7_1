@@ -11,10 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import coil.load
-import coil.transform.CircleCropTransformation
 import com.vas.core.utils.Constants
 import com.vas.core.utils.Result
-import com.vas.core.utils.Status
 import com.vas.feature_details_screen.R
 import com.vas.feature_details_screen.databinding.FragmentDetailsBinding
 import com.vas.feature_details_screen.di.DetailsComponentViewModel
